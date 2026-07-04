@@ -5,14 +5,26 @@ import java.util.List;
 public class DataHandler {
 
     public static String formatName(List<String> list, int index) {
-        if (list == null || index < 0 || index >= list.size()) {
-            return "Wrong index!";
+        if (list == null) {
+            throw new NullPointerException("list must not be null");
         }
-        return "Name: " + list.get(index) + " is in index " + index;
+        if (list.isEmpty()) {
+            return "";
+        }
+        if (index < 0 || index >= list.size()) {
+            throw new IllegalArgumentException(
+                    String.format("Index %d is out of bounds for list of size %d", index, list.size()));
+        }
+        return String.format("Name: %s is in index %d", list.get(index), index);
     }
 
     public static String formatList(List<String> list) {
-        if (list == null) return "";
+        if (list == null) {
+            throw new NullPointerException("list must not be null");
+        }
+        if (list.isEmpty()) {
+            return "";
+        }
         StringBuilder sb = new StringBuilder("Names:\n");
         for (int i = 0; i < list.size(); i++) {
             sb.append(String.format("%d) %s%n", i + 1, list.get(i)));
