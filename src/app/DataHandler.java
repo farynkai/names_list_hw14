@@ -5,10 +5,7 @@ import java.util.List;
 public class DataHandler {
 
     public static String formatName(List<String> list, int index) {
-        if (list == null) {
-            throw new NullPointerException("list must not be null");
-        }
-        if (list.isEmpty()) {
+        if (list == null || list.isEmpty()) {
             return "";
         }
         if (index < 0 || index >= list.size()) {
@@ -19,10 +16,7 @@ public class DataHandler {
     }
 
     public static String formatList(List<String> list) {
-        if (list == null) {
-            throw new NullPointerException("list must not be null");
-        }
-        if (list.isEmpty()) {
+        if (list == null || list.isEmpty()) {
             return "";
         }
         StringBuilder sb = new StringBuilder("Names:\n");
